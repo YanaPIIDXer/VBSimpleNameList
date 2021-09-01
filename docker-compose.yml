@@ -1,0 +1,22 @@
+version: "3.0"
+services:
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend/src:/app
+      - /app/node_modules
+    ports:
+      - 80:80
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: develop
+      MYSQL_PASSWORD: develop
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql_data:/var/lib/mysql
