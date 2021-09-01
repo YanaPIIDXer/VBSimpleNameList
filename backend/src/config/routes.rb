@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'person#index'
-  post 'person/create'
-  get 'person/read'
-  patch 'person/update'
-  delete 'person/delete'
+  post 'person' => 'person#create'
+  get 'person' => 'person#read'
+  patch 'person' => 'person#update'
+  delete 'person' => 'person#delete'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
