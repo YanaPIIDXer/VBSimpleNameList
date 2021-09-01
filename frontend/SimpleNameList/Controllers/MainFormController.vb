@@ -8,6 +8,7 @@
     End Property
 
     ' リストを取得してくる
-    Public Sub FetchPersonList()
-    End Sub
+    Public Async Function FetchPersonList() As Task
+        _personList = Await BackendConnection.FetchList()
+    End Function
 End Class
