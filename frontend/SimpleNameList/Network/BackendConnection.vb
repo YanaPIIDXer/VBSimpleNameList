@@ -43,4 +43,33 @@ Public Class BackendConnection
         End Using
         Return result
     End Function
+
+    ' 更新
+    Public Shared Async Function PatchPerson(id As Integer, lastName As String, firstName As String) As Task(Of Boolean)
+        Dim result As Boolean = False
+        Using client As New HttpClient()
+            Dim jsonText As String = "{""first_name"":""" + firstName + """, ""last_name"":""" + lastName + """}"
+            Dim requestContent As New StringContent(jsonText, System.Text.Encoding.UTF8, "application/json")
+
+            Using response As HttpResponseMessage = Await client.PatchAsync(ENDPOINT + "/" + id, requestContent)
+                Dim responseBody As String = Await response.Content.ReadAsStringAsync()
+                Dim responseObject As JObject = CType(DeserializeObject(responseBody), JObject)
+                result = responseObject("result").ToObject(Of Boolean)
+            End Using
+        End Using
+        Return result
+    End Function
+
+    ' 削除
+    Public Shared Async Function DeletePerson(id As Integer, lastName As String, firstName As String) As Task(Of Boolean)
+        Dim result As Boolean = False
+        Using client As New HttpClient()
+            Using response As HttpResponseMessage = Await client.DeleteAsync(ENDPOINT + "/" + id)
+                Dim responseBody As String = Await response.Content.ReadAsStringAsync()
+                Dim responseObject As JObject = CType(DeserializeObject(responseBody), JObject)
+                result = responseObject("result").ToObject(Of Boolean)
+            End Using
+        End Using
+        Return result
+    End Function
 End Class
