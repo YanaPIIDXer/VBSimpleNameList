@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'person#index'
   post 'person/create'
   get 'person/read'
   patch 'person/update'
