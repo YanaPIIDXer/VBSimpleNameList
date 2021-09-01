@@ -16,4 +16,14 @@
     Public Async Function AddNewPerson(lastName As String, firstName As String) As Task(Of Boolean)
         Return Await BackendConnection.AddNewPerson(lastName, firstName)
     End Function
+
+    ' 更新
+    Public Async Function PatchPerson(id As Integer, lastName As String, firstName As String) As Task(Of Boolean)
+        Return Await BackendConnection.PatchPerson(id, lastName, firstName)
+    End Function
+
+    ' 削除
+    Public Async Function DeletePerson(id As Integer) As Task(Of Boolean)
+        Return Await BackendConnection.DeletePerson(id)
+    End Function
 End Class

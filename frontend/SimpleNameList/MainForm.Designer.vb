@@ -26,6 +26,12 @@ Partial Class MainForm
         Me.lastNameTextBox = New System.Windows.Forms.TextBox()
         Me.firstNameTextBox = New System.Windows.Forms.TextBox()
         Me.addButton = New System.Windows.Forms.Button()
+        Me.personPanel = New System.Windows.Forms.Panel()
+        Me.patchLastNameTextBox = New System.Windows.Forms.TextBox()
+        Me.patchFirstNameTextBox = New System.Windows.Forms.TextBox()
+        Me.patchButton = New System.Windows.Forms.Button()
+        Me.deleteButton = New System.Windows.Forms.Button()
+        Me.personPanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'personListBox
@@ -60,17 +66,64 @@ Partial Class MainForm
         Me.addButton.Text = "追加"
         Me.addButton.UseVisualStyleBackColor = True
         '
+        'personPanel
+        '
+        Me.personPanel.Controls.Add(Me.deleteButton)
+        Me.personPanel.Controls.Add(Me.patchButton)
+        Me.personPanel.Controls.Add(Me.patchFirstNameTextBox)
+        Me.personPanel.Controls.Add(Me.patchLastNameTextBox)
+        Me.personPanel.Enabled = False
+        Me.personPanel.Location = New System.Drawing.Point(754, 13)
+        Me.personPanel.Name = "personPanel"
+        Me.personPanel.Size = New System.Drawing.Size(253, 379)
+        Me.personPanel.TabIndex = 4
+        '
+        'patchLastNameTextBox
+        '
+        Me.patchLastNameTextBox.Location = New System.Drawing.Point(67, 63)
+        Me.patchLastNameTextBox.Name = "patchLastNameTextBox"
+        Me.patchLastNameTextBox.Size = New System.Drawing.Size(100, 23)
+        Me.patchLastNameTextBox.TabIndex = 0
+        '
+        'patchFirstNameTextBox
+        '
+        Me.patchFirstNameTextBox.Location = New System.Drawing.Point(67, 130)
+        Me.patchFirstNameTextBox.Name = "patchFirstNameTextBox"
+        Me.patchFirstNameTextBox.Size = New System.Drawing.Size(100, 23)
+        Me.patchFirstNameTextBox.TabIndex = 1
+        '
+        'patchButton
+        '
+        Me.patchButton.Location = New System.Drawing.Point(67, 203)
+        Me.patchButton.Name = "patchButton"
+        Me.patchButton.Size = New System.Drawing.Size(100, 23)
+        Me.patchButton.TabIndex = 2
+        Me.patchButton.Text = "更新"
+        Me.patchButton.UseVisualStyleBackColor = True
+        '
+        'deleteButton
+        '
+        Me.deleteButton.Location = New System.Drawing.Point(67, 285)
+        Me.deleteButton.Name = "deleteButton"
+        Me.deleteButton.Size = New System.Drawing.Size(100, 23)
+        Me.deleteButton.TabIndex = 3
+        Me.deleteButton.Text = "消去"
+        Me.deleteButton.UseVisualStyleBackColor = True
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(1030, 450)
+        Me.Controls.Add(Me.personPanel)
         Me.Controls.Add(Me.addButton)
         Me.Controls.Add(Me.firstNameTextBox)
         Me.Controls.Add(Me.lastNameTextBox)
         Me.Controls.Add(Me.personListBox)
         Me.Name = "MainForm"
         Me.Text = "名簿システム"
+        Me.personPanel.ResumeLayout(False)
+        Me.personPanel.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -80,4 +133,9 @@ Partial Class MainForm
     Friend WithEvents lastNameTextBox As TextBox
     Friend WithEvents firstNameTextBox As TextBox
     Friend WithEvents addButton As Button
+    Friend WithEvents personPanel As Panel
+    Friend WithEvents patchLastNameTextBox As TextBox
+    Friend WithEvents patchFirstNameTextBox As TextBox
+    Friend WithEvents deleteButton As Button
+    Friend WithEvents patchButton As Button
 End Class
