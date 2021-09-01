@@ -11,4 +11,9 @@
     Public Async Function FetchPersonList() As Task
         _personList = Await BackendConnection.FetchList()
     End Function
+
+    ' 新規追加
+    Public Async Function AddNewPerson(lastName As String, firstName As String) As Task(Of Boolean)
+        Return Await BackendConnection.AddNewPerson(lastName, firstName)
+    End Function
 End Class

@@ -26,7 +26,17 @@
         addButton.Enabled = lastNameTextBox.Text.Length > 0 And firstNameTextBox.Text.Length > 0
     End Sub
 
-    Private Sub addButton_Click(sender As Object, e As EventArgs) Handles addButton.Click
+    Private Async Sub addButton_Click(sender As Object, e As EventArgs) Handles addButton.Click
+        Dim result As Boolean = Await _controller.AddNewPerson(lastNameTextBox.Text, firstNameTextBox.Text)
+        If Not result Then
+            MessageBox.Show("追加に失敗しました")
+            Return
+        End If
 
+        lastNameTextBox.Text = ""
+        firstNameTextBox.Text = ""
+
+        ' 面倒なので取り直す。
+        Await FetchAndUpdatePersonList()
     End Sub
 End Class

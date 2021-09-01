@@ -27,4 +27,20 @@ Public Class BackendConnection
 
         Return list
     End Function
+
+    ' 新規追加
+    Public Shared Async Function AddNewPerson(lastName As String, firstName As String) As Task(Of Boolean)
+        Dim result As Boolean = False
+        Using client As New HttpClient()
+            Dim jsonText As String = "{""first_name"":""" + firstName + """, ""last_name"":""" + lastName + """}"
+            Dim requestContent As New StringContent(jsonText, System.Text.Encoding.UTF8, "application/json")
+
+            Using response As HttpResponseMessage = Await client.PostAsync(ENDPOINT, requestContent)
+                Dim responseBody As String = Await response.Content.ReadAsStringAsync()
+                Dim responseObject As JObject = CType(DeserializeObject(responseBody), JObject)
+                result = responseObject("result").ToObject(Of Boolean)
+            End Using
+        End Using
+        Return result
+    End Function
 End Class

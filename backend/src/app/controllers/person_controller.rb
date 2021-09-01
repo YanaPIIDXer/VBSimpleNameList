@@ -1,4 +1,6 @@
 class PersonController < ApplicationController
+  skip_forgery_protection
+  
   def index
     response = { message: "Person", result: true }
     render json: response
@@ -7,8 +9,8 @@ class PersonController < ApplicationController
   def create
     response = { result: false }
 
-    last_name = params[:last_name]
-    first_name = params[:first_name]
+    last_name = params["last_name"]
+    first_name = params["first_name"]
     person = Person.new(last_name: last_name, first_name: first_name)
     if person.save then
       response[:result] = true
