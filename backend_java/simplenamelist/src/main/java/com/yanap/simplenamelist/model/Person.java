@@ -15,6 +15,4 @@ public class Person {
 	public String toString() {
 		return last_name + " " + first_name;
 	}
-
-
 }

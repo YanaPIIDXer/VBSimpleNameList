@@ -3,9 +3,12 @@ package com.yanap.simplenamelist.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.yanap.simplenamelist.model.Person;
@@ -32,14 +35,24 @@ public class PersonController {
 		}
 	}
 
-	@RequestMapping("/person")
-	public ListResponse Index() {
+	@GetMapping("/person")
+	public ListResponse index() {
 		return new ListResponse(service.findAll());
 	}
 
 	@PostMapping("/person")
-	public ResultResponse Add(@RequestBody Person person) {
-		System.out.println(person.toString());
-		return new ResultResponse(false);
+	public ResultResponse add(@RequestBody Person person) {
+		return new ResultResponse(service.add(person));
+	}
+
+	@PatchMapping("/person/{id}")
+	public ResultResponse update(@PathVariable("id") long id, @RequestBody Person person) {
+		person.setid(id);
+		return new ResultResponse(service.update(person));
+	}
+
+	@DeleteMapping("/person/{id}")
+	public ResultResponse delete(@PathVariable("id") long id) {
+		return new ResultResponse(service.delete(id));
 	}
 }
