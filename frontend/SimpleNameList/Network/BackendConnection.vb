@@ -4,7 +4,7 @@ Imports Newtonsoft.Json.Linq
 
 Public Class BackendConnection
     ' エンドポイント
-    Private Const ENDPOINT As String = "http://localhost/person"
+    Private Const ENDPOINT As String = "http://localhost:8080/person"
 
     ' リストのフェッチ
     Public Shared Async Function FetchList() As Task(Of List(Of Person))
