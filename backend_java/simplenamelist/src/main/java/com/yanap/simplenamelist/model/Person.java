@@ -5,10 +5,16 @@ public class Person {
 	private String last_name;
 	private String first_name;
 
-	public Long getId() { return id; }
-	public void setId(Long id) { this.id = id; }
-	public String getLastName() { return last_name; }
-	public void setLastName(String lastName) { this.last_name = lastName; }
-	public String getFirstName() { return first_name; }
-	public void setFirstName(String firstName) { this.first_name = firstName; }
+	public Long getid() { return id; }
+	public void setid(Long id) { this.id = id; }
+	public String getlast_name() { return last_name; }
+	public void setlast_name(String lastName) { this.last_name = lastName; }
+	public String getfirst_name() { return first_name; }
+	public void setfirst_name(String firstName) { this.first_name = firstName; }
+	@Override
+	public String toString() {
+		return last_name + " " + first_name;
+	}
+
+
 }
