@@ -16,7 +16,8 @@ public class TestController {
 
     @RequestMapping("/")
     @ResponseBody
-    public HelloWorld Index() {
-        return new HelloWorld();
+    public HelloWorld[] Index() {
+        HelloWorld[] list = { new HelloWorld(), new HelloWorld(), new HelloWorld() };
+        return list;
     }
 }
